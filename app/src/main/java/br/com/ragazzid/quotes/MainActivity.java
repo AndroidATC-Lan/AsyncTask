@@ -39,8 +39,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String quoteText = new HttpConnection().doInBackground("https://api.chucknorris.io/jokes/random");
+                Quotes quote = new Quotes(quoteText);
                 TextView txtviewQuotes = (TextView) findViewById(R.id.quotes);
-                txtviewQuotes.setText(quoteText);
+                txtviewQuotes.setText(quote.getValue());
             }
         });
     }
