@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
+        escreverDoArquivo();
+
         Button btnNovo = (Button) findViewById(R.id.btnNovo);
 
         btnNovo.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
                 String quoteText = new HttpConnection().doInBackground("https://api.chucknorris.io/jokes/random");
                 TextView txtviewQuotes = (TextView) findViewById(R.id.quotes);
                 txtviewQuotes.setText(quoteText);
+            }
+        });
+
+        Button btnSalvar = (Button) findViewById(R.id.bntSalvar);
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView txtviewQuotes = (TextView) findViewById(R.id.quotes);
+                salvaQuote(txtviewQuotes.getText().toString());
             }
         });
     }
@@ -65,5 +76,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void escreverDoArquivo(){
+        SalvarQuotes quotes = new SalvarQuotes();
+        String quote = quotes.readFromFile(this);
+        if(!quote.isEmpty()){
+            TextView txtSaved = (TextView) findViewById(R.id.txtSaved);
+            txtSaved.setText(quote);
+        }
+    }
+
+    private void salvaQuote(String quote){
+        SalvarQuotes quotes = new SalvarQuotes();
+        quotes.writeToFile(quote, this);
+        escreverDoArquivo();
     }
 }

@@ -39,7 +39,31 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.639" />
+        app:layout_constraintVertical_bias="0.66"
+        app:layout_constraintHorizontal_bias="0.192" />
+
+    <Button
+        android:id="@+id/bntSalvar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.66"
+        app:layout_constraintHorizontal_bias="0.81" />
+
     />
 
+    <TextView
+        android:id="@+id/txtSaved"
+        android:layout_width="295dp"
+        android:layout_height="88dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.893"
+        android:layout_marginLeft="45dp" />
 </android.support.constraint.ConstraintLayout>
